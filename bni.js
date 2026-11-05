@@ -41,7 +41,7 @@ window.addEventListener('load', function() {
         setTimeout(() => {
             initialLoading.style.display = 'none';
         }, 500);
-    }, 1500);
+    }, 1000);
 });
 
 // Format Otomatis Rupiah
